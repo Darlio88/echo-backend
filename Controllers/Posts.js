@@ -29,7 +29,6 @@ export const updatePost = async (req, res) => {
        const id = req.params.id
        const body = req.body
      const post = await PostModel.findByIdAndUpdate(id, body)
-    await  post.save()
      res.status(200).send(post)
     } catch (error) {
         res.status(409).json({error: error.message})

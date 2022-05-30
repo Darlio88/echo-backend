@@ -22,12 +22,14 @@ app.use(bodyParser.urlencoded({limit:'50mb', extended: true }))
 app.use('/posts', postRoutes)
 app.use('/user', userRoutes)
 
-
 const url = process.env.MONGODB
 const PORT = process.env.PORT || 5500
 
 
-mongoose.connect(url,{}).then(
+mongoose.connect(url,{
+     useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(
     ()=>app.listen(PORT,()=>{
         console.log(`app running on port ${PORT}`)
 
